@@ -8,7 +8,7 @@ class MeleeWeapon:
         self.damage_type = damage_type
             String, ex: 'Sharp', 'Blunt'
         self.elemental_damage = elemental_damage
-            List of type and damage ranges in tuple, e-x: [('Frost', (1, 5)), ('Fire', (2, 6))]
+            List of type and damage ranges in tuple, ex: [('Frost', (1, 5)), ('Fire', (2, 6))]
         self.attack_speed = attack_speed
             Attack speed ex: 1.3, 2.6
         self.size = size
