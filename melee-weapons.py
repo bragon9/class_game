@@ -1,22 +1,23 @@
 from random import randint
 
 class MeleeWeapon:
-    ''' Parent class for all melee weapons.'''
-    def __init__(self, name, damage_range, damage_type, elemental_damage, attack_speed, size, attack_range):
-        # String
-        self.name = name
-        # Tuple of low and high damage ex: (1, 5), (3, 100)
+    ''' Parent class for all melee weapons.
+        Weapons should have the following attributes:
         self.damage_range = damage_range
-        # String, ex: 'Sharp', 'Blunt', 
+            Tuple of low and high damage ex: (1, 5), (3, 100)
         self.damage_type = damage_type
-        # List of type and damage ranges in tuple, e-x: [('Frost', (1, 5)), ('Fire', (2, 6))]
+            String, ex: 'Sharp', 'Blunt'
         self.elemental_damage = elemental_damage
-        # Attack speed ex: 1.3, 2.6
+            List of type and damage ranges in tuple, e-x: [('Frost', (1, 5)), ('Fire', (2, 6))]
         self.attack_speed = attack_speed
-        # How many hands to wield ex: 1, 2
+            Attack speed ex: 1.3, 2.6
         self.size = size
-        # Range ex: 1, 4
+            How many hands to wield ex: 1, 2
         self.attack_range = attack_range
+            Range ex: 1, 4'''
+    def __init__(self, name):
+        self.name = name
+        self.elemental_damage = []
 
     def __str__(self):
         return self.name
@@ -40,5 +41,30 @@ class MeleeWeapon:
 
 class Sword(MeleeWeapon):
     '''Parent class for all swords.'''
-    def __init__(self, name, damage_range, damage_type, elemental_damage, attack_speed, size, attack_range):
-        MeleeWeapon.__init__(self, name, damage_range, damage_type, elemental_damage, attack_speed, size, attack_range)
+    def __init__(self, name):
+        MeleeWeapon.__init__(self, name)
+        self.damage_type = 'Sharp'
+
+class ShortSword(Sword):
+    '''Short Sword'''
+    def __init__(self, name):
+        Sword.__init__(self, name)
+        self.damage_range = (2, 5)
+        self.attack_speed = 1.5
+        self.size = 1
+        self.attack_range = 2
+
+class Dagger(MeleeWeapon):
+    '''Parent class for all daggers.'''
+    def __init__(self, name):
+        MeleeWeapon.__init__(self, name)
+        self.damage_type = 'Sharp'
+
+class PocketKnife(Dagger):
+    '''Pocket Knife'''
+    def __init__(self, name):
+        Dagger.__init__(self, name)
+        self.damage_range = (1, 2)
+        self.attack_speed = 2.5
+        self.size = 1
+        self.attack_range = 1
